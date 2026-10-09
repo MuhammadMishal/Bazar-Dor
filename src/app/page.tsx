@@ -1,5 +1,11 @@
-import Image from "next/image";
+import HeroSection from "./components/homepage/Hero";
 
 export default function Home() {
-  return <h2>hello home</h2>;
+  return (
+    <>
+      <div className="flex flex-col gap-5 py-10">
+        <HeroSection />
+      </div>
+    </>
+  );
 }
