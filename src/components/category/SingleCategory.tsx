@@ -15,33 +15,44 @@ const SingleCategoryPage = async ({
   });
 
   const products = await getProductsByCategoryId(categoryId);
-
   return (
-    <div className="px-4 py-5 sm:px-6 sm:py-7 lg:px-8">
-      <div className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-white p-4 sm:gap-4 sm:p-7">
-        <span className="shrink-0 text-3xl sm:text-4xl">{category.icon}</span>
+    <div className="px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+      <div className="flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:gap-4 sm:p-6 lg:p-7">
+        <span className="shrink-0 text-3xl sm:text-4xl lg:text-5xl">
+          {category.icon}
+        </span>
         <div className="min-w-0 space-y-1">
-          <h2 className="wrap-break-word text-xl font-bold text-[#1D271F] sm:text-2xl">
+          <h2 className="wrap-break-word text-xl font-bold text-[#1D271F] sm:text-2xl lg:text-[2rem]">
             {category.nameBn}
           </h2>
-          <p className="text-sm text-[#1d271fa2] sm:text-base">
+          <p className="text-sm text-[#1d271fa2] sm:text-base lg:text-lg">
             {products.length}টি পণ্যের আজকের দাম ও পরিবর্তন
           </p>
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-end rounded-2xl border border-gray-200 bg-white p-3 sm:mt-7 sm:p-5">
-        <select defaultValue="Pick a color" className="select w-full sm:w-auto">
-          <option disabled={true}>Pick a color</option>
-          <option>Crimson</option>
-          <option>Amber</option>
-          <option>Velvet</option>
-        </select>
+      <div className="flex flex-col items-start justify-between gap-3 pt-5 sm:flex-row sm:items-center sm:pt-7 lg:pt-8">
+        <h2 className="text-sm text-[#1d271fa1] sm:text-base lg:text-lg">
+          মোট {products.length}টি পণ্য দেখানো হচ্ছে
+        </h2>
+        <div className="flex w-full items-center gap-2 sm:w-auto">
+          <label
+            htmlFor="sort"
+            className="whitespace-nowrap text-sm text-[#1d271f] sm:text-base"
+          >
+            সাজান
+          </label>
+          <select
+            id="sort"
+            defaultValue="ডিফল্ট"
+            className="select select-bordered w-full rounded-xl border border-gray-300 bg-white px-8 py-2 text-sm outline-none transition focus:border-gray-400 focus:outline-none sm:w-auto lg:min-w-[210px]"
+          >
+            <option value={"ডিফল্ট"}>ডিফল্ট</option>
+            <option value="দাম: কম থেকে বেশি">দাম: কম থেকে বেশি</option>
+            <option value="দাম: বেশি থেকে কম">দাম: বেশি থেকে কম</option>
+          </select>
+        </div>
       </div>
-
-      <h2 className="pt-6 text-sm text-[#1d271fa1] sm:pt-8 sm:text-base">
-        মোট {products.length}টি পণ্য দেখানো হচ্ছে
-      </h2>
 
       <div className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((product: IAllProducts) => (
