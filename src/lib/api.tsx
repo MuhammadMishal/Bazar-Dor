@@ -1,12 +1,11 @@
 import type { IAllProducts, ICategoriesNavbar } from "@/types/type";
 
+const API_BASE_URL = "https://api.api-store.workers.dev/api/bazardor";
+
 export const allCategories = async (): Promise<ICategoriesNavbar[]> => {
-  const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/categories",
-    {
-      cache: "force-cache",
-    },
-  );
+  const res = await fetch(`${API_BASE_URL}/categories`, {
+    cache: "force-cache",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch categories");
@@ -16,12 +15,9 @@ export const allCategories = async (): Promise<ICategoriesNavbar[]> => {
 };
 
 export const allProducts = async (): Promise<IAllProducts[]> => {
-  const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
-    {
-      cache: "force-cache",
-    },
-  );
+  const res = await fetch(`${API_BASE_URL}/products`, {
+    cache: "force-cache",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch all products");
@@ -36,19 +32,19 @@ export const singleProduct = async ({
   slug: string;
 }): Promise<IAllProducts> => {
   console.log(slug, "slug from api");
-  const res = await fetch(
-    `https://api.api-store.workers.dev/api/bazardor/products/${slug}`,
-  );
+  const res = await fetch(`${API_BASE_URL}/products/${slug}`);
   if (!res.ok) {
     throw new Error("Failed to fetch Product");
   }
   return res.json();
 };
 
-export const singleCategory = async ({ slug }: { slug: string }) => {
-  const res = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/categories/${slug}`,
-  );
+export const singleCategory = async ({
+  slug,
+}: {
+  slug: string;
+}): Promise<ICategoriesNavbar> => {
+  const res = await fetch(`${API_BASE_URL}/categories/${slug}`);
   if (!res.ok) {
     throw new Error("Failed to fetch Category");
   }
@@ -58,13 +54,9 @@ export const singleCategory = async ({ slug }: { slug: string }) => {
 export const getProductsByCategoryId = async (
   categoryId: string,
 ): Promise<IAllProducts[]> => {
-  const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products?category=" +
-      categoryId,
-    {
-      cache: "force-cache",
-    },
-  );
+  const res = await fetch(`${API_BASE_URL}/products?category=${categoryId}`, {
+    cache: "force-cache",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch products by category");

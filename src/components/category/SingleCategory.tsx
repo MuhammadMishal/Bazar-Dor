@@ -1,20 +1,34 @@
 import ProductCard from "@/components/shared/ProductCard";
 import { getProductsByCategoryId, singleCategory } from "@/lib/api";
-import { IAllProducts, ICategoriesNavbar } from "@/types/type";
+import { IAllProducts } from "@/types/type";
+import CategorySortSelect from "./CategorySort";
 
 const SingleCategoryPage = async ({
   params,
+  searchParams,
 }: {
   params: Promise<{ categoryId: string }>;
+  searchParams?: Promise<{ sort?: string }>;
 }) => {
   const { categoryId } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+  console.log(resolvedSearchParams, "resolvedSearchParams");
+  const selectedSort = resolvedSearchParams.sort ?? "default";
 
-  console.log(categoryId, "categoryId");
-  const category: ICategoriesNavbar = await singleCategory({
+  const category = await singleCategory({
     slug: categoryId,
   });
 
-  const products = await getProductsByCategoryId(categoryId);
+  let products = await getProductsByCategoryId(categoryId);
+
+  if (selectedSort === "price_desc") {
+    products = [...products].sort((a, b) => (b.today ?? 0) - (a.today ?? 0));
+  }
+
+  if (selectedSort === "price_asc") {
+    products = [...products].sort((a, b) => (a.today ?? 0) - (b.today ?? 0));
+  }
+
   return (
     <div className="px-3 py-4 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
       <div className="flex flex-col items-start gap-3 rounded-2xl border border-gray-200 bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:gap-4 sm:p-6 lg:p-7">
@@ -35,23 +49,8 @@ const SingleCategoryPage = async ({
         <h2 className="text-sm text-[#1d271fa1] sm:text-base lg:text-lg">
           মোট {products.length}টি পণ্য দেখানো হচ্ছে
         </h2>
-        <div className="flex w-full items-center gap-2 sm:w-auto">
-          <label
-            htmlFor="sort"
-            className="whitespace-nowrap text-sm text-[#1d271f] sm:text-base"
-          >
-            সাজান
-          </label>
-          <select
-            id="sort"
-            defaultValue="ডিফল্ট"
-            className="select select-bordered w-full rounded-xl border border-gray-300 bg-white px-8 py-2 text-sm outline-none transition focus:border-gray-400 focus:outline-none sm:w-auto lg:min-w-[210px]"
-          >
-            <option value={"ডিফল্ট"}>ডিফল্ট</option>
-            <option value="দাম: কম থেকে বেশি">দাম: কম থেকে বেশি</option>
-            <option value="দাম: বেশি থেকে কম">দাম: বেশি থেকে কম</option>
-          </select>
-        </div>
+
+        <CategorySortSelect initialSort={selectedSort} />
       </div>
 
       <div className="grid grid-cols-1 gap-3 py-4 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
