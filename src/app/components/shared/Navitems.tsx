@@ -6,18 +6,18 @@ const Navitems = async () => {
   const categories = await allCategories();
 
   return (
-    <div className="border-t border-gray-100 ">
-      <div className="container mx-auto flex justify-start py-3">
+    <div className="border-t border-gray-100">
+      <nav className="container mx-auto flex w-full gap-1 overflow-x-auto px-3 py-2 sm:gap-2 sm:px-6 sm:py-3 lg:px-8">
         {categories.map((cat: ICategoriesNavbar) => (
           <Link
-            className="flex gap-2 justify-center items-center rounded text-[#1D271F] hover:bg-gray-200 py-1.5 px-5"
+            className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded px-3 py-2 text-sm text-[#1D271F] hover:bg-gray-200 sm:px-5 sm:text-base"
             key={cat.id}
-            href={`./categories/${cat.slug}`}
+            href={`./category/${cat.id}`}
           >
             {cat.icon} {cat.nameBn}
           </Link>
         ))}
-      </div>
+      </nav>
     </div>
   );
 };

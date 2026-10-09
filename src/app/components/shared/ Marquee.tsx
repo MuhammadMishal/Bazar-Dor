@@ -9,10 +9,10 @@ const MarqueeProducts = async () => {
 
   return (
     <div className="py-1.5 border-y border-gray-200">
-      <Marquee className="flex gap-5" speed={150} pauseOnHover={true}>
+      <Marquee className="flex gap-5" speed={80} pauseOnHover={true}>
         {products.map((product: IAllProducts) => (
-          <Link key={product.id} href="">
-            <div className="flex gap-1.5 hover:underline text-sm px-3">
+          <Link key={product.id} href={`/product/${product.id}`}>
+            <div className="flex items-center gap-1.5 px-2 text-xs hover:underline sm:px-3 sm:text-sm">
               <span>{product.image}</span>
               <span>{product.nameBn}</span>
               <span>

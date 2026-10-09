@@ -1,17 +1,10 @@
-"use client";
+import { connection } from "next/server";
 
-import { useEffect, useState } from "react";
-
-const CurrentDate = () => {
-  const [date, setDate] = useState("");
-
-  useEffect(() => {
-    setDate(
-      new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full",
-      }),
-    );
-  }, []);
+const CurrentDate = async () => {
+  await connection();
+  const date = new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+  });
 
   return <p className="text-[12px]">{date}</p>;
 };

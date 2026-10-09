@@ -5,6 +5,13 @@ export interface ICategoriesNavbar {
   icon: string;
 }
 
+interface Market {
+  market: string;
+  division: string;
+  min: number;
+  max: number;
+}
+
 export interface IAllProducts {
   id: number;
   slug: string;
@@ -22,10 +29,5 @@ export interface IAllProducts {
     dir: string;
     pct: number;
   };
-  markets: {
-    market: string;
-    division: string;
-    min: number;
-    max: number;
-  };
+  markets: Market[];
 }
