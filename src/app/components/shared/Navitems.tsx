@@ -7,7 +7,7 @@ const Navitems = async () => {
 
   return (
     <div className="border-t border-gray-100 ">
-      <div className="container mx-auto flex justify-center py-3">
+      <div className="container mx-auto flex justify-start py-3">
         {categories.map((cat: ICategoriesNavbar) => (
           <Link
             className="flex gap-2 justify-center items-center rounded text-[#1D271F] hover:bg-gray-200 py-1.5 px-5"
