@@ -54,3 +54,21 @@ export const singleCategory = async ({ slug }: { slug: string }) => {
   }
   return res.json();
 };
+
+export const getProductsByCategoryId = async (
+  categoryId: string,
+): Promise<IAllProducts[]> => {
+  const res = await fetch(
+    "https://api.api-store.workers.dev/api/bazardor/products?category=" +
+      categoryId,
+    {
+      cache: "force-cache",
+    },
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch products by category");
+  }
+
+  return res.json();
+};

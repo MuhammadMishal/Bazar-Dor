@@ -1,4 +1,4 @@
-import SingleProductPage from "@/app/components/product/SingleProduct";
+import SingleProductPage from "@/components/product/SingleProduct";
 import React, { Suspense } from "react";
 
 const ProductDetails = ({

@@ -1,5 +1,5 @@
-import ProductCard from "@/app/components/shared/ProductCard";
-import { allProducts, singleCategory } from "@/lib/api";
+import ProductCard from "@/components/shared/ProductCard";
+import { getProductsByCategoryId, singleCategory } from "@/lib/api";
 import { IAllProducts, ICategoriesNavbar } from "@/types/type";
 
 const SingleCategoryPage = async ({
@@ -9,15 +9,12 @@ const SingleCategoryPage = async ({
 }) => {
   const { categoryId } = await params;
 
+  console.log(categoryId, "categoryId");
   const category: ICategoriesNavbar = await singleCategory({
     slug: categoryId,
   });
 
-  const productByCategory = await allProducts();
-
-  const products = productByCategory.filter(
-    (product: IAllProducts) => product.category === categoryId,
-  );
+  const products = await getProductsByCategoryId(categoryId);
 
   return (
     <div className="px-4 py-5 sm:px-6 sm:py-7 lg:px-8">

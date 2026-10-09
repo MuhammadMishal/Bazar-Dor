@@ -12,7 +12,7 @@ const Navitems = async () => {
           <Link
             className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded px-3 py-2 text-sm text-[#1D271F] hover:bg-gray-200 sm:px-5 sm:text-base"
             key={cat.id}
-            href={`./category/${cat.id}`}
+            href={`/category/${cat.id}`}
           >
             {cat.icon} {cat.nameBn}
           </Link>

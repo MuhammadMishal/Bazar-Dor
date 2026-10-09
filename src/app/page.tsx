@@ -1,7 +1,7 @@
-import HeroSection from "./components/homepage/Hero";
-import PriceDownSection from "./components/homepage/PriceDown";
-import PriceUpSection from "./components/homepage/PriceUp";
-import AllProducts from "./components/homepage/Products";
+import HeroSection from "../components/homepage/Hero";
+import PriceDownSection from "../components/homepage/PriceDown";
+import PriceUpSection from "../components/homepage/PriceUp";
+import AllProducts from "../components/homepage/Products";
 
 export default function Home() {
   return (
