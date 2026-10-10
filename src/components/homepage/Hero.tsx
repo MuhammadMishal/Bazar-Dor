@@ -4,6 +4,7 @@ import Image from "next/image";
 import HeroImage from "@/assets/bazar-hero.png";
 import CurrentDate from "../shared/CurrentDate";
 import { Suspense } from "react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -35,12 +36,13 @@ const HeroSection = () => {
           বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।
         </p>
 
-        <button
+        <Link
+          href="#all-products"
           className="btn w-full rounded-xl bg-[#05893e] px-5 py-4 text-base font-semibold text-white sm:w-auto sm:py-5 sm:text-lg"
           spellCheck={false}
         >
           সব পণ্য দেখুন
-        </button>
+        </Link>
       </div>
 
       <div className="order-1 flex justify-center md:order-2 md:col-span-1">

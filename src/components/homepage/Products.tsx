@@ -9,7 +9,7 @@ const AllProducts = async () => {
   const totalProducts = products.length;
 
   return (
-    <div className="w-full">
+    <div className="w-full" id="all-products">
       <h2 className="text-lg md:text-xl text-[#1D271F] font-bold">সব পণ্য</h2>
       <p className="text-xs md:text-sm text-[#1D271F] py-3">
         মোট {totalProducts}টি পণ্য দেখানো হচ্ছে
@@ -22,7 +22,4 @@ const AllProducts = async () => {
     </div>
   );
 };
-
-/* cspell:enable */
-
 export default AllProducts;
