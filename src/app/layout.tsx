@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 
 const hindSiliguri = Hind_Siliguri({
   variable: "--font-hind-siliguri",
-  subsets: ["latin"],
+  subsets: ["latin", "bengali"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
