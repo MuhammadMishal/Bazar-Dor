@@ -12,7 +12,7 @@ const PriceUpSection = async () => {
   return (
     <div className="py-10">
       <h2 className="text-lg sm:text-xl text-[#1D271F] font-bold">
-        <span className="text-red-500 pr-2">▲</span>আজ দাম বাড়ছে
+        <span className="text-[#D03739] pr-2">▲</span>আজ দাম বাড়ছে
       </h2>
       <div className="grid grid-cols-1 gap-4 py-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {priceUpProducts.slice(0, 8).map((product: IAllProducts) => (

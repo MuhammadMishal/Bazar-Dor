@@ -1,6 +1,6 @@
 import type { IAllProducts, ICategoriesNavbar } from "@/types/type";
 
-const API_BASE_URL = "https://api.api-store.workers.dev/api/bazardor";
+const API_BASE_URL = "https://api.abcz.workers.dev/api/bazardor";
 
 export const allCategories = async (): Promise<ICategoriesNavbar[]> => {
   const res = await fetch(`${API_BASE_URL}/categories`, {

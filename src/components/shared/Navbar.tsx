@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="sticky top-0 z-50 bg-white shadow-sm">
         <div className="container mx-auto flex items-center justify-between gap-2 px-4 sm:gap-4 sm:px-6 lg:px-8 ">
           <div className="flex gap-3 items-center">
-            <div className="my-2 rounded bg-green-500 p-1.5 sm:my-3 sm:p-2">
+            <div className="my-2 rounded bg-[#05893E] p-1.5 sm:my-3 sm:p-2">
               <Link href="/">
                 <Image
                   src={Logo}

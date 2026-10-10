@@ -14,7 +14,7 @@ const PriceDownSection = async () => {
         className="text-lg md:text-xl text-[#1D271F] font-bold"
         spellCheck={false}
       >
-        <span className="text-[#05893e] pr-2">▼</span>আজ দাম কমেছে
+        <span className="text-[#1A9951] pr-2">▼</span>আজ দাম কমেছে
       </h2>
       <div className="grid grid-cols-1 gap-4 py-5 md:grid-cols-2 lg:grid-cols-3">
         {priceDownProducts.slice(0, 8).map((product: IAllProducts) => (

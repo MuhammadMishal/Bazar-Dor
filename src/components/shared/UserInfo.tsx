@@ -118,14 +118,14 @@ const UserInfo = () => {
         <div className="flex items-center gap-2">
           <Link
             href="/signin"
-            className="rounded-lg px-4 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
+            className="rounded-lg px-4 py-2 text-sm  text-gray-700 transition-colors hover:bg-gray-100 font-bold"
           >
             সাইন ইন
           </Link>
 
           <Link
             href="/signup"
-            className="rounded-lg bg-[#05893e] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#046d32]"
+            className="rounded-lg bg-[#05893E] px-4 py-2 text-sm  text-white transition-colors hover:bg-[#046d32] font-bold"
           >
             সাইন আপ
           </Link>

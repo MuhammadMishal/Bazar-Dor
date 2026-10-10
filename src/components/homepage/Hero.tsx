@@ -1,5 +1,3 @@
-/* cspell:disable */
-
 import Image from "next/image";
 import HeroImage from "@/assets/bazar-hero.png";
 import CurrentDate from "../shared/CurrentDate";

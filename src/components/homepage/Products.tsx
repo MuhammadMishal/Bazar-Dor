@@ -1,5 +1,3 @@
-/* cspell:disable */
-
 import { allProducts } from "@/lib/api";
 import { IAllProducts } from "@/types/type";
 import ProductCard from "../shared/ProductCard";
