@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 
 const MarqueeProducts = async () => {
   const products = await allProducts();
-  console.log(products, "products");
 
   return (
     <div className="py-1.5 border-y border-gray-200">

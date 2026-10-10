@@ -7,11 +7,11 @@ const SingleProductPage = async ({
 }) => {
   const { productId } = await params;
 
-  console.log(productId);
+  // console.log(productId);
 
   const product = await singleProduct({ slug: productId });
 
-  console.log("===============", product);
+  // console.log("===============", product);
 
   const totalMinPrice =
     product?.markets.reduce((acc, current) => acc + current.min, 0) /
@@ -111,8 +111,7 @@ const SingleProductPage = async ({
           <div className="space-y-1.5 rounded-2xl border border-gray-200 p-4 sm:p-5">
             <p className="text-sm">গড় দাম</p>
             <p className="text-[#1A9951]">
-              <span className="text-xl font-bold sm:text-2xl">{ave}</span>{" "}
-              টাকা
+              <span className="text-xl font-bold sm:text-2xl">{ave}</span> টাকা
             </p>
             <p className="text-sm">প্রতি {product?.unit}-এর হিসাবে</p>
           </div>

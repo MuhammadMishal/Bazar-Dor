@@ -66,7 +66,7 @@ const SignUpPage = () => {
               type="text"
               name="name"
               className="input outline-0 focus:border-[#05893e] w-full text-sm"
-              placeholder="যেমন: রহিম উদ্দিন"
+              placeholder="যেমন: জন ডো"
             />
 
             <label className="label text-sm font-medium pt-3">ইমেজ</label>

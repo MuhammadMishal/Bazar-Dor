@@ -59,9 +59,8 @@ const Navbar = () => {
           </nav>
         </div>
       </div>
-      <Suspense fallback={<p className="text-[12px]">দাম লোড হচ্ছে...</p>}>
-        <Marquee />
-      </Suspense>
+
+      <Marquee />
     </>
   );
 };
