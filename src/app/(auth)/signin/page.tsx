@@ -2,9 +2,9 @@
 
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
-import { toast } from "react-toastify/unstyled";
-
+import { toast } from "react-toastify";
 const SignInPage = () => {
   const handleSignIn = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,18 +27,18 @@ const SignInPage = () => {
 
     toast.success("সফলভাবে সাইন ইন সম্পন্ন হয়েছে");
   };
-  const handleGoogleSignUp = async () => {
-    const data = await signIn.social({
-      provider: "google",
-    });
-    toast.success("সফলভাবে সাইন ইন সম্পন্ন হয়েছে");
-  };
 
-  const handleGithubSignUp = async () => {
-    const data = await signIn.social({
-      provider: "github",
+  const handleGoogleSignUp = async () => {
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/",
     });
-    toast.success("সফলভাবে সাইন ইন সম্পন্ন হয়েছে");
+  };
+  const handleGithubSignUp = async () => {
+    await signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
   };
 
   return (

@@ -1,25 +1,36 @@
+"use client";
+
 import { allCategories } from "@/lib/api";
 import { ICategoriesNavbar } from "@/types/type";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
-const Navitems = async () => {
-  const categories = await allCategories();
+const NavItems = () => {
+  const pathname = usePathname();
+  const [categories, setCategories] = useState<ICategoriesNavbar[]>([]);
 
-  return (
-    <div className="border-t border-gray-100">
-      <nav className="container mx-auto flex w-full gap-1 overflow-x-auto px-3 py-2 sm:gap-2 sm:px-6 sm:py-3 lg:px-8">
-        {categories.map((cat: ICategoriesNavbar) => (
-          <Link
-            className="flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded px-3 py-2 text-sm text-[#1D271F] hover:bg-gray-200 sm:px-5 sm:text-base"
-            key={cat.id}
-            href={`/category/${cat.id}`}
-          >
-            {cat.icon} {cat.nameBn}
-          </Link>
-        ))}
-      </nav>
-    </div>
-  );
+  useEffect(() => {
+    allCategories().then(setCategories);
+  }, []);
+
+  return categories.map((cat) => {
+    const isActive = pathname === `/category/${cat.id}`;
+    return (
+      <Link
+        key={cat.id}
+        href={`/category/${cat.id}`}
+        className={`flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded px-3 py-2 text-sm transition-colors sm:px-5 sm:text-base ${
+          isActive
+            ? "bg-green-600 text-white font-medium"
+            : "text-[#1D271F] hover:bg-gray-100"
+        }`}
+      >
+        <span>{cat.icon}</span>
+        <span>{cat.nameBn}</span>
+      </Link>
+    );
+  });
 };
 
-export default Navitems;
+export default NavItems;

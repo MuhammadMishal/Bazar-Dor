@@ -2,8 +2,9 @@
 
 import { signIn, signUp } from "@/lib/auth-client";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
-import { toast } from "react-toastify/unstyled";
+import { toast } from "react-toastify";
 const baseURL = process.env.NEXT_PUBLIC_BETTER_AUTH_URL as string;
 const SignUpPage = () => {
   const handleSignUp = async (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -37,25 +38,18 @@ const SignUpPage = () => {
 
     toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে।");
   };
+
   const handleGoogleSignUp = async () => {
-    console.log("callbackURL", baseURL);
-    try {
-      const data = await signIn.social({
-        provider: "google",
-        callbackURL: "/",
-      });
-      toast.success("সফলভাবে সাইন আপ সম্পন্ন হয়েছে");
-    } catch (error) {
-      console.log(error, "error from google sign up");
-      toast.error("সাইন আপ ব্যর্থ হয়েছে");
-    }
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
   };
   const handleGithubSignUp = async () => {
-    const data = await signIn.social({
+    await signIn.social({
       provider: "github",
       callbackURL: "/",
     });
-    toast.success("সফলভাবে সাইন আপ সম্পন্ন হয়েছে");
   };
 
   return (
