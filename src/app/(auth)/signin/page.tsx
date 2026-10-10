@@ -2,12 +2,21 @@
 
 import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { toast } from "react-toastify";
 
-const SignInPage = () => {
+const SignInForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const requestedURL = searchParams.get("callbackURL");
+
+  const callbackURL =
+    requestedURL?.startsWith("/") && !requestedURL.startsWith("//")
+      ? requestedURL
+      : "/";
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,7 +40,7 @@ const SignInPage = () => {
       }
 
       toast.success("সফলভাবে সাইন ইন সম্পন্ন হয়েছে");
-      router.push("/");
+      router.push(callbackURL);
     } catch (error) {
       console.error(error);
       toast.error("সাইন ইন করা যায়নি। আবার চেষ্টা করুন।");
@@ -42,7 +51,7 @@ const SignInPage = () => {
     try {
       await signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: "/?signin=success",
       });
     } catch (error) {
       console.error(error);
@@ -54,7 +63,7 @@ const SignInPage = () => {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: "/",
+        callbackURL: "/?signin=success",
       });
     } catch (error) {
       console.error(error);
@@ -182,6 +191,20 @@ const SignInPage = () => {
         <Link href="/">← হোম পেজে ফিরে যান</Link>
       </p>
     </div>
+  );
+};
+
+const SignInPage = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-40 items-center justify-center">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#05893e] border-t-transparent" />
+        </div>
+      }
+    >
+      <SignInForm />
+    </Suspense>
   );
 };
 

@@ -50,25 +50,25 @@ const SignUpPage = () => {
     try {
       await signIn.social({
         provider: "google",
-        callbackURL: "/",
+        callbackURL: "/?signup=success",
       });
     } catch (error) {
       console.error("Google signup error:", error);
       toast.error("Google দিয়ে সাইন আপ করা যায়নি।");
     }
   };
+
   const handleGithubSignUp = async () => {
     try {
       await signIn.social({
         provider: "github",
-        callbackURL: "/",
+        callbackURL: "/?signup=success",
       });
     } catch (error) {
       console.error("GitHub signup error:", error);
       toast.error("GitHub দিয়ে সাইন আপ করা যায়নি।");
     }
   };
-
   return (
     <div className="mx-auto w-full max-w-md px-4 py-10">
       <h2 className="text-center text-2xl font-bold">অ্যাকাউন্ট তৈরি করুন</h2>

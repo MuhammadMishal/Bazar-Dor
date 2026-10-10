@@ -33,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="container mx-auto w-full">{children}</div>
         </main>
         <Footer />
-        <ToastContainer />
+        <ToastContainer position="top-center" />
       </body>
     </html>
   );
